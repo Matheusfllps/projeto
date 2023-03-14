@@ -8,15 +8,15 @@
   --bg-color: rgba(255, 255, 255, 0.1);
   --bg-color-hover: rgba(255, 255, 255, 0.05);
   --border-color: rgba(255, 255, 255, 0.5);
-  --border-hover:  #FFFFFF;
+  --border-hover: #ffffff;
   --bg-url: url(./assets/bg_dark.jpg);
   --switch-bg-url: url(./assets/moon-stars.svg);
 }
 .light {
   --text-color: black;
   --bg-color: rgba(0, 0, 0, 0.05);
-  --bg-color-hover:rgba(0, 0, 0, 0.02);
-  --border-color:  rgba(0, 0, 0, 0.5);
+  --bg-color-hover: rgba(0, 0, 0, 0.02);
+  --border-color: rgba(0, 0, 0, 0.5);
   --border-hover: #000000;
   --bg-url: url(./assets/bg_light.jpg);
   --switch-bg-url: url(./assets/sun-stars.svg);
@@ -28,6 +28,7 @@ body {
   background-size: cover;//preencher todo espaço visivel */
   /* background: color image repeat position/size */
   background: var(--bg-url) no-repeat top center/cover;
+  height: 100vh;
 }
 body * {
   // aplica para todos os seletores dentro do body
@@ -76,10 +77,11 @@ body * {
   left: 0;
   z-index: 1;
   transform: translateY(-50%);
+  animation: slide-back 0.3s;
 }
 .light #switch button {
-  right: 0;
-  left: initial;
+  animation: slide-in 0.4s forwards; //forwards mantem as propriedades finais da animação
+   
 }
 #switch span {
   display: block;
@@ -153,3 +155,20 @@ footer {
 /* footer a {
   text-decoration: none;
 } */
+/* animation */
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
+  }
+}
